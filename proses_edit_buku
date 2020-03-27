@@ -1,0 +1,19 @@
+<?php
+	include('../config.php');
+	
+	$id = @$_GET['id'];
+	
+	$Judul = @$_POST['judul'];
+	$Penerbit = @$_POST['penerbit'];
+    $Pengarang = @$_POST['pengarang'];
+    $Ringkasan = @$_POST['ringkasan'];
+    $Cover = @$_POST['cover'];
+    $Stok = @$_POST['stok'];
+	
+	$sql = mysqli_query($koneksi,"UPDATE t_buku SET judul='$JudulBuku', penerbit='$Penerbit', pengarang='$Pengarang', ringkasan='$Ringkasan', cover='$Cover', stok='$Stok' where id='$id'");
+    if($sql){
+        echo '<script>alert("Berhasil menyimpan data."); document.location="tampil_buku.php?id='.$id.'";</script>';
+    }else{
+        echo '<div class="alert alert-warning">Gagal melakukan proses edit data.</div>';
+    }
+    // header('location:tampil_buku.php');
